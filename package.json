@@ -15,9 +15,7 @@
     "react-countup": "^6.5.3",
     "react-dom": "^19.2.7",
     "react-router-dom": "^7.18.0",
-    "react-tsparticles": "^2.12.2",
-    "react-type-animation": "^3.2.0",
-    "tsparticles": "^4.3.0"
+    "react-type-animation": "^3.2.0"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
