@@ -1,0 +1,180 @@
+/* =========================
+   CARD HOVER EFFECTS
+========================= */
+
+.hover-card {
+  transition: all 0.35s ease;
+  cursor: pointer;
+}
+
+.hover-card:hover {
+  transform: translateY(-12px);
+  box-shadow:
+    0 20px 40px rgba(37, 99, 235, 0.25),
+    0 0 40px rgba(56, 189, 248, 0.1);
+}
+
+/* =========================
+   BUTTON EFFECTS
+========================= */
+
+.hover-btn {
+  transition: all 0.3s ease;
+}
+
+.hover-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(37, 99, 235, 0.35);
+}
+
+/* =========================
+   TECHNOLOGY BADGES
+========================= */
+
+.tech-card {
+  transition: all 0.25s ease;
+}
+
+.tech-card:hover {
+  transform: scale(1.08);
+  background: #2563eb !important;
+  color: white !important;
+}
+
+/* =========================
+   STATS CARDS
+========================= */
+
+.stats-card {
+  transition: all 0.3s ease;
+}
+
+.stats-card:hover {
+  transform: translateY(-8px);
+  border-color: #2563eb !important;
+}
+
+/* =========================
+   PROJECT CARDS
+========================= */
+
+.project-card {
+  transition: all 0.35s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 25px 50px rgba(37, 99, 235, 0.2);
+}
+/* =========================
+   FADE UP ANIMATION
+========================= */
+
+.fade-up {
+  animation: fadeUp 0.8s ease forwards;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================
+   FLOATING EFFECT
+========================= */
+
+.float {
+  animation: floatAnimation 4s ease-in-out infinite;
+}
+
+@keyframes floatAnimation {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-15px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* =========================
+   GLOW BUTTON
+========================= */
+
+.glow-button {
+  transition: all 0.3s ease;
+}
+
+.glow-button:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 0 20px rgba(56, 189, 248, 0.4),
+    0 0 40px rgba(56, 189, 248, 0.2);
+}
+
+/* =========================
+   IMAGE HOVER
+========================= */
+
+.image-hover {
+  transition: all 0.4s ease;
+}
+
+.image-hover:hover {
+  transform: scale(1.05);
+}
+/* =========================
+   TECH CLOUD
+========================= */
+
+.logo-slider {
+  overflow: hidden;
+  width: 100%;
+}
+
+.logo-track {
+  display: flex;
+  gap: 25px;
+  width: max-content;
+  animation: scrollLogos 30s linear infinite;
+}
+
+.logo-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes scrollLogos {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+/* =========================
+   FOOTER LINKS
+========================= */
+
+.footer-link {
+  color: #94a3b8;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+
+.footer-link:hover {
+  color: white !important;
+  transform: translateX(4px);
+}

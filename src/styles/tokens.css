@@ -1,0 +1,350 @@
+/* ============================================================
+   SNC Technologies — Design Tokens
+   Single source of truth for every visual decision.
+   All components read from here; nothing hardcodes values.
+   ============================================================ */
+
+:root {
+  /* ----------------------------------------------------------
+     BRAND PALETTE
+     Raw hex values. Components use semantic tokens below.
+  ---------------------------------------------------------- */
+  --color-navy-950: #050d1a;
+  --color-navy-900: #0a1628;
+  --color-navy-800: #0f2040;
+  --color-navy-700: #1a3258;
+  --color-navy-600: #1e2d40;
+  --color-navy-500: #2a3f58;
+
+  --color-blue-600: #1251c5;
+  --color-blue-500: #1b6ef3;
+  --color-blue-400: #4d8ef5;
+  --color-blue-300: #85b3f8;
+  --color-blue-100: #dbeafe;
+
+  --color-cyan-500: #00d4ff;
+  --color-cyan-400: #33ddff;
+  --color-cyan-300: #66e5ff;
+  --color-cyan-100: #ccf6ff;
+
+  --color-steel-600: #5a6b7a;
+  --color-steel-500: #6b7d8e;
+  --color-steel-400: #8899a6;
+  --color-steel-300: #a8b8c4;
+  --color-steel-200: #c8d4dc;
+  --color-steel-100: #e4eaee;
+
+  --color-white: #ffffff;
+  --color-ghost: #f4f6f9;
+  --color-ghost-dark: #e8ecf0;
+
+  --color-emerald-600: #059669;
+  --color-emerald-500: #10b981;
+  --color-emerald-100: #d1fae5;
+
+  --color-amber-600: #d97706;
+  --color-amber-500: #f59e0b;
+  --color-amber-100: #fef3c7;
+
+  --color-red-600: #dc2626;
+  --color-red-500: #ef4444;
+  --color-red-100: #fee2e2;
+
+  --color-purple-600: #7c3aed;
+  --color-purple-500: #8b5cf6;
+  --color-purple-100: #ede9fe;
+
+  /* ----------------------------------------------------------
+     SEMANTIC TOKENS — Public site (light theme)
+  ---------------------------------------------------------- */
+
+  /* Surfaces */
+  --surface-page: var(--color-white);
+  --surface-subtle: var(--color-ghost);
+  --surface-card: var(--color-white);
+  --surface-card-alt: var(--color-ghost);
+  --surface-nav: var(--color-navy-900);
+  --surface-hero: var(--color-navy-900);
+  --surface-overlay: rgba(10, 22, 40, 0.6);
+
+  /* Text */
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
+  --text-inverse: var(--color-white);
+  --text-inverse-muted: rgba(255, 255, 255, 0.65);
+  --text-brand: var(--color-blue-500);
+  --text-accent: var(--color-cyan-500);
+
+  /* Borders */
+  --border-default: #e2e8f0;
+  --border-strong: #cbd5e1;
+  --border-brand: var(--color-blue-500);
+  --border-accent: var(--color-cyan-500);
+  --border-subtle: rgba(0, 0, 0, 0.06);
+
+  /* Interactive */
+  --btn-primary-bg: var(--color-blue-500);
+  --btn-primary-bg-hover: var(--color-blue-600);
+  --btn-primary-text: var(--color-white);
+  --btn-ghost-bg: transparent;
+  --btn-ghost-bg-hover: rgba(27, 110, 243, 0.08);
+  --btn-ghost-text: var(--color-blue-500);
+  --btn-ghost-border: var(--color-blue-500);
+
+  /* Status */
+  --status-success-bg: var(--color-emerald-100);
+  --status-success-text: var(--color-emerald-600);
+  --status-warning-bg: var(--color-amber-100);
+  --status-warning-text: var(--color-amber-600);
+  --status-danger-bg: var(--color-red-100);
+  --status-danger-text: var(--color-red-600);
+  --status-info-bg: var(--color-blue-100);
+  --status-info-text: var(--color-blue-600);
+
+  /* ----------------------------------------------------------
+     TYPOGRAPHY
+  ---------------------------------------------------------- */
+  --font-display: "Inter", system-ui, -apple-system, sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", "Cascadia Code", monospace;
+
+  /* Scale */
+  --text-d1: clamp(52px, 6.5vw, 80px);
+  --text-d2: clamp(38px, 4.8vw, 60px);
+  --text-h1: clamp(32px, 3.8vw, 48px);
+  --text-h2: clamp(24px, 2.8vw, 36px);
+  --text-h3: clamp(18px, 2vw, 24px);
+  --text-h4: clamp(16px, 1.6vw, 20px);
+  --text-body-lg: 18px;
+  --text-body: 16px;
+  --text-sm: 14px;
+  --text-xs: 12px;
+
+  /* Weights */
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  /* Line heights */
+  --leading-tight: 1.15;
+  --leading-snug: 1.35;
+  --leading-normal: 1.6;
+  --leading-relaxed: 1.75;
+
+  /* Letter spacing */
+  --tracking-tightest: -0.04em;
+  --tracking-tighter: -0.025em;
+  --tracking-tight: -0.015em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.05em;
+  --tracking-wider: 0.1em;
+
+  /* ----------------------------------------------------------
+     SPACING SCALE  (4px base unit)
+  ---------------------------------------------------------- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+  --space-32: 128px;
+
+  /* Section vertical rhythm */
+  --section-padding-y: clamp(64px, 8vw, 120px);
+  --section-padding-y-sm: clamp(40px, 5vw, 72px);
+
+  /* Content max widths */
+  --container-max: 1280px;
+  --container-prose: 720px;
+  --container-tight: 520px;
+
+  /* ----------------------------------------------------------
+     BORDER RADIUS
+  ---------------------------------------------------------- */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 24px;
+  --radius-full: 9999px;
+
+  /* ----------------------------------------------------------
+     SHADOWS
+  ---------------------------------------------------------- */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.06), 0 2px 4px rgba(0, 0, 0, 0.04);
+  --shadow-lg: 0 10px 24px rgba(0, 0, 0, 0.08), 0 4px 8px rgba(0, 0, 0, 0.04);
+  --shadow-xl: 0 20px 48px rgba(0, 0, 0, 0.12), 0 8px 16px rgba(0, 0, 0, 0.06);
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.06), 0 0 0 1px rgba(0, 0, 0, 0.04);
+
+  /* Glow effects (used on dark hero sections) */
+  --glow-blue:
+    0 0 40px rgba(27, 110, 243, 0.35), 0 0 80px rgba(27, 110, 243, 0.15);
+  --glow-cyan: 0 0 40px rgba(0, 212, 255, 0.3), 0 0 80px rgba(0, 212, 255, 0.1);
+
+  /* ----------------------------------------------------------
+     Z-INDEX LAYERS
+  ---------------------------------------------------------- */
+  --z-below: -1;
+  --z-base: 0;
+  --z-raised: 10;
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-overlay: 300;
+  --z-modal: 400;
+  --z-toast: 500;
+
+  /* ----------------------------------------------------------
+     TRANSITIONS
+  ---------------------------------------------------------- */
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-expo-out: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --duration-fast: 150ms;
+  --duration-base: 250ms;
+  --duration-slow: 400ms;
+  --duration-slower: 600ms;
+
+  --transition-base: all var(--duration-base) var(--ease-out);
+  --transition-colors:
+    color var(--duration-base) var(--ease-out),
+    background-color var(--duration-base) var(--ease-out),
+    border-color var(--duration-base) var(--ease-out);
+  --transition-transform: transform var(--duration-base) var(--ease-out);
+
+  /* ----------------------------------------------------------
+     LAYOUT
+  ---------------------------------------------------------- */
+  --nav-height: 72px;
+  --nav-height-mobile: 60px;
+
+  /* ----------------------------------------------------------
+     ANIMATION DELAYS  (stagger utility)
+  ---------------------------------------------------------- */
+  --stagger-1: 0ms;
+  --stagger-2: 80ms;
+  --stagger-3: 160ms;
+  --stagger-4: 240ms;
+  --stagger-5: 320ms;
+  --stagger-6: 400ms;
+}
+
+/* ============================================================
+   DASHBOARD THEME TOKENS
+   Scoped to [data-theme] on the DashboardLayout root div.
+   Does NOT affect the public site.
+   Default: dark. Toggled to light via ThemeToggle.
+   ============================================================ */
+
+[data-theme="dark"] {
+  /* Surfaces */
+  --dash-bg: var(--color-navy-950);
+  --dash-surface: var(--color-navy-900);
+  --dash-surface-2: var(--color-navy-800);
+  --dash-surface-3: var(--color-navy-700);
+  --dash-card: var(--color-navy-600);
+  --dash-card-hover: var(--color-navy-500);
+
+  /* Text */
+  --dash-text-primary: rgba(255, 255, 255, 0.95);
+  --dash-text-secondary: rgba(255, 255, 255, 0.6);
+  --dash-text-muted: rgba(255, 255, 255, 0.35);
+
+  /* Borders */
+  --dash-border: rgba(255, 255, 255, 0.08);
+  --dash-border-strong: rgba(255, 255, 255, 0.16);
+
+  /* Accent */
+  --dash-accent: var(--color-cyan-500);
+  --dash-accent-dim: rgba(0, 212, 255, 0.15);
+  --dash-brand: var(--color-blue-500);
+  --dash-brand-dim: rgba(27, 110, 243, 0.2);
+
+  /* Status */
+  --dash-success: var(--color-emerald-500);
+  --dash-success-dim: rgba(16, 185, 129, 0.15);
+  --dash-warning: var(--color-amber-500);
+  --dash-warning-dim: rgba(245, 158, 11, 0.15);
+  --dash-danger: var(--color-red-500);
+  --dash-danger-dim: rgba(239, 68, 68, 0.15);
+
+  /* Sidebar */
+  --dash-sidebar-bg: var(--color-navy-950);
+  --dash-sidebar-active: rgba(27, 110, 243, 0.2);
+  --dash-sidebar-text: rgba(255, 255, 255, 0.55);
+  --dash-sidebar-text-active: rgba(255, 255, 255, 0.95);
+
+  /* Chart */
+  --dash-chart-grid: rgba(255, 255, 255, 0.05);
+  --dash-chart-label: rgba(255, 255, 255, 0.4);
+
+  /* Scrollbar */
+  --dash-scrollbar-track: rgba(255, 255, 255, 0.04);
+  --dash-scrollbar-thumb: rgba(255, 255, 255, 0.14);
+
+  /* Toggle icon hint */
+  --dash-toggle-icon: "☀";
+}
+
+[data-theme="light"] {
+  /* Surfaces */
+  --dash-bg: #f0f4f8;
+  --dash-surface: var(--color-white);
+  --dash-surface-2: var(--color-ghost);
+  --dash-surface-3: #e4ebf2;
+  --dash-card: var(--color-white);
+  --dash-card-hover: var(--color-ghost);
+
+  /* Text */
+  --dash-text-primary: #0f172a;
+  --dash-text-secondary: #475569;
+  --dash-text-muted: #94a3b8;
+
+  /* Borders */
+  --dash-border: rgba(0, 0, 0, 0.07);
+  --dash-border-strong: rgba(0, 0, 0, 0.14);
+
+  /* Accent */
+  --dash-accent: var(--color-blue-500);
+  --dash-accent-dim: rgba(27, 110, 243, 0.1);
+  --dash-brand: var(--color-blue-600);
+  --dash-brand-dim: rgba(18, 81, 197, 0.1);
+
+  /* Status */
+  --dash-success: var(--color-emerald-600);
+  --dash-success-dim: rgba(5, 150, 105, 0.1);
+  --dash-warning: var(--color-amber-600);
+  --dash-warning-dim: rgba(217, 119, 6, 0.1);
+  --dash-danger: var(--color-red-600);
+  --dash-danger-dim: rgba(220, 38, 38, 0.1);
+
+  /* Sidebar */
+  --dash-sidebar-bg: var(--color-navy-900);
+  --dash-sidebar-active: rgba(27, 110, 243, 0.25);
+  --dash-sidebar-text: rgba(255, 255, 255, 0.55);
+  --dash-sidebar-text-active: rgba(255, 255, 255, 0.95);
+
+  /* Chart */
+  --dash-chart-grid: rgba(0, 0, 0, 0.06);
+  --dash-chart-label: rgba(0, 0, 0, 0.4);
+
+  /* Scrollbar */
+  --dash-scrollbar-track: rgba(0, 0, 0, 0.04);
+  --dash-scrollbar-thumb: rgba(0, 0, 0, 0.16);
+}
+
+body {
+  background: black !important;
+}
