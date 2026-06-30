@@ -12,17 +12,15 @@ export default function LoadingScreen() {
         zIndex: 999999,
       }}
     >
-      <h1
+      <img
+        src="/logo.png"
+        alt="SNC Technologies"
         style={{
-          color: "white",
-          fontSize: "48px",
-          fontWeight: "800",
-          marginBottom: "20px",
-          letterSpacing: "2px",
+          width: "320px",
+          maxWidth: "80%",
+          objectFit: "contain",
         }}
-      >
-        SNC Technologies
-      </h1>
+      />
 
       <p
         style={{
