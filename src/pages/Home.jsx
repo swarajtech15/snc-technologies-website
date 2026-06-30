@@ -59,10 +59,12 @@ export default function Home() {
           borderTop: "1px solid rgba(255,255,255,0.1)",
         }}
       >
-        Note: This website is a demonstration portfolio project created for
-        educational and showcase purposes only. SNC Technologies is a conceptual
-        company created to demonstrate web development, UI/UX design, and modern
-        software engineering practices.
+        🚀 Interested in a website like this? This is a demonstration website
+        developed by SNC Technologies to showcase our design and development
+        capabilities. If you’d like a fully customized, production-ready
+        website, web application, or software solution for your business, please
+        visit our Contact Us page and share your requirements. We’d be glad to
+        help bring your vision to life.
       </div>
     </>
   );

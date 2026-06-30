@@ -1,6 +1,66 @@
+import { useState } from "react";
+import emailjs from "@emailjs/browser";
+
 export default function Contact() {
   const isMobile = window.innerWidth < 768;
   const isTablet = window.innerWidth < 900;
+
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+
+  const [sending, setSending] = useState(false);
+  const [status, setStatus] = useState("");
+
+  const handleChange = (e) => {
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const sendEmail = async () => {
+    if (!form.name || !form.email || !form.subject || !form.message) {
+      alert("Please fill all fields.");
+      return;
+    }
+
+    try {
+      setSending(true);
+
+      await emailjs.send(
+        "service_5weq00n",
+        "template_it7ktg9",
+        {
+          name: form.name,
+          email: form.email,
+          phone: "Not Provided",
+          subject: form.subject,
+          message: form.message,
+        },
+        "dFNU9MQhyohyyz-VM",
+      );
+
+      setStatus("success");
+      setTimeout(() => setStatus(""), 5000);
+
+      setForm({
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
+      });
+    } catch (error) {
+      console.error(error);
+      setStatus("error");
+      setTimeout(() => setStatus(""), 5000);
+    } finally {
+      setSending(false);
+    }
+  };
 
   const cardStyle = {
     background: "#0f1d33",
@@ -9,7 +69,7 @@ export default function Contact() {
     marginBottom: "25px",
     border: "1px solid rgba(255,255,255,0.08)",
     boxShadow: "0 10px 30px rgba(0,0,0,0.2)",
-    transition: "0.3s",
+    color: "#ffffff",
   };
 
   const inputStyle = {
@@ -77,56 +137,64 @@ export default function Contact() {
             gap: "50px",
           }}
         >
-          {/* Left Side */}
+          {/* Left */}
           <div>
             <div className="hover-card" style={cardStyle}>
-              <h3 style={{ color: "#fff", marginBottom: "10px" }}>
+              <h3 style={{ color: "#ffffff", marginBottom: "10px" }}>
                 📍 Address
               </h3>
+
               <p style={{ color: "#cbd5e1" }}>Mumbai, Maharashtra, India</p>
             </div>
 
             <div className="hover-card" style={cardStyle}>
-              <h3 style={{ color: "#fff", marginBottom: "10px" }}>📞 Phone</h3>
-              <p style={{ color: "#cbd5e1" }}>+91 XXXXX XXXXX</p>
+              <h3 style={{ color: "#ffffff", marginBottom: "10px" }}>
+                📞 Phone
+              </h3>
+
+              <p style={{ color: "#cbd5e1" }}>+91 89280 39613 </p>
             </div>
 
             <div className="hover-card" style={cardStyle}>
-              <h3 style={{ color: "#fff", marginBottom: "10px" }}>✉️ Email</h3>
-              <p style={{ color: "#cbd5e1" }}>contact@snctechnologies.com</p>
-            </div>
-
-            <div className="hover-card" style={cardStyle}>
-              <h3 style={{ color: "#fff", marginBottom: "10px" }}>
+              <h3 style={{ color: "#ffffff", marginBottom: "10px" }}>
                 🕒 Working Hours
               </h3>
+
               <p style={{ color: "#cbd5e1" }}>Monday - Friday</p>
+
               <p style={{ color: "#cbd5e1" }}>9:00 AM - 6:00 PM</p>
             </div>
 
             <div className="hover-card" style={cardStyle}>
-              <h3 style={{ color: "#fff", marginBottom: "10px" }}>
+              <h3 style={{ color: "#ffffff", marginBottom: "10px" }}>
                 🌐 Follow Us
               </h3>
 
               <div
                 style={{
                   display: "flex",
+
                   gap: "20px",
+
                   marginTop: "20px",
+
                   fontSize: "28px",
+
                   justifyContent: isMobile ? "center" : "flex-start",
                 }}
               >
                 <span>💼</span>
+
                 <span>📸</span>
+
                 <span>🐦</span>
+
                 <span>📺</span>
               </div>
             </div>
           </div>
 
-          {/* Right Side */}
+          {/* Right */}
           <div
             style={{
               background: "#0f1d33",
@@ -134,6 +202,7 @@ export default function Contact() {
               borderRadius: "20px",
               border: "1px solid rgba(255,255,255,0.08)",
               boxShadow: "0 10px 30px rgba(0,0,0,0.2)",
+              color: "#ffffff",
             }}
           >
             <h2
@@ -146,18 +215,38 @@ export default function Contact() {
               Send us a message
             </h2>
 
-            <input type="text" placeholder="Your Name" style={inputStyle} />
+            <input
+              type="text"
+              name="name"
+              value={form.name}
+              onChange={handleChange}
+              placeholder="Your Name"
+              style={inputStyle}
+            />
 
             <input
               type="email"
+              name="email"
+              value={form.email}
+              onChange={handleChange}
               placeholder="Email Address"
               style={inputStyle}
             />
 
-            <input type="text" placeholder="Subject" style={inputStyle} />
+            <input
+              type="text"
+              name="subject"
+              value={form.subject}
+              onChange={handleChange}
+              placeholder="Subject"
+              style={inputStyle}
+            />
 
             <textarea
               rows="6"
+              name="message"
+              value={form.message}
+              onChange={handleChange}
               placeholder="Your Message"
               style={{
                 ...inputStyle,
@@ -165,7 +254,44 @@ export default function Contact() {
               }}
             />
 
+            {status === "success" && (
+              <div
+                style={{
+                  background: "rgba(16,185,129,0.15)",
+                  border: "1px solid #10b981",
+                  color: "#10b981",
+                  padding: "15px",
+                  borderRadius: "10px",
+                  marginBottom: "20px",
+                  fontWeight: "600",
+                }}
+              >
+                ✅ Thank you for contacting SNC Technologies. Our team has
+                successfully received your message and will get back to you
+                shortly.
+              </div>
+            )}
+
+            {status === "error" && (
+              <div
+                style={{
+                  background: "rgba(239,68,68,0.15)",
+                  border: "1px solid #ef4444",
+                  color: "#ef4444",
+                  padding: "15px",
+                  borderRadius: "10px",
+                  marginBottom: "20px",
+                  fontWeight: "600",
+                }}
+              >
+                ❌ We couldn't send your message. Please try again in a few
+                moments.
+              </div>
+            )}
+
             <button
+              onClick={sendEmail}
+              disabled={sending}
               className="btn btn--primary hover-btn glow-button"
               style={{
                 width: isMobile ? "100%" : "auto",
@@ -174,7 +300,7 @@ export default function Contact() {
                 fontWeight: "700",
               }}
             >
-              Send Message
+              {sending ? "Sending..." : "Send Message"}
             </button>
           </div>
         </div>
@@ -207,86 +333,6 @@ export default function Contact() {
             loading="lazy"
             title="map"
           />
-        </div>
-
-        {/* FAQ */}
-        <div
-          style={{
-            marginTop: isMobile ? "70px" : "100px",
-          }}
-        >
-          <h2
-            style={{
-              textAlign: "center",
-              fontSize: "clamp(28px,5vw,40px)",
-              marginBottom: "40px",
-              color: "#ffffff",
-            }}
-          >
-            Frequently Asked Questions
-          </h2>
-
-          <div className="hover-card" style={cardStyle}>
-            <h3
-              style={{
-                color: "#ffffff",
-                marginBottom: "15px",
-              }}
-            >
-              How long does a project take?
-            </h3>
-
-            <p
-              style={{
-                color: "#cbd5e1",
-                lineHeight: "1.8",
-              }}
-            >
-              Most projects are completed within 2–12 weeks depending on
-              complexity.
-            </p>
-          </div>
-
-          <div className="hover-card" style={cardStyle}>
-            <h3
-              style={{
-                color: "#ffffff",
-                marginBottom: "15px",
-              }}
-            >
-              Do you provide maintenance?
-            </h3>
-
-            <p
-              style={{
-                color: "#cbd5e1",
-                lineHeight: "1.8",
-              }}
-            >
-              Yes, we provide ongoing support, maintenance, and upgrades.
-            </p>
-          </div>
-
-          <div className="hover-card" style={cardStyle}>
-            <h3
-              style={{
-                color: "#ffffff",
-                marginBottom: "15px",
-              }}
-            >
-              Do you build AI solutions?
-            </h3>
-
-            <p
-              style={{
-                color: "#cbd5e1",
-                lineHeight: "1.8",
-              }}
-            >
-              Absolutely. AI, cloud, cybersecurity, and enterprise software are
-              our specialties.
-            </p>
-          </div>
         </div>
       </div>
     </div>
