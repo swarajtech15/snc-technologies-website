@@ -1,3 +1,7 @@
+import { useState } from "react";
+import emailjs from "@emailjs/browser";
+import toast from "react-hot-toast";
+
 const inputStyle = {
   background: "#081425",
   border: "1px solid #1e293b",
@@ -13,6 +17,86 @@ const inputStyle = {
 export default function Consultation() {
   const isMobile = window.innerWidth < 768;
 
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    company: "",
+    consultation: "",
+    date: "",
+    time: "",
+    message: "",
+  });
+
+  const [sending, setSending] = useState(false);
+
+  const handleChange = (e) => {
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const sendConsultation = async (e) => {
+    e.preventDefault();
+
+    if (
+      !form.name ||
+      !form.email ||
+      !form.company ||
+      !form.consultation ||
+      !form.date ||
+      !form.time ||
+      !form.message
+    ) {
+      toast("Please fill all required fields.", {
+        icon: "⚠️",
+      });
+      return;
+    }
+
+    try {
+      setSending(true);
+
+      await emailjs.send(
+        "service_5weq00n",
+        "template_41epack",
+        {
+          name: form.name,
+          email: form.email,
+          company: form.company,
+          consultation: form.consultation,
+          budget: "Not specified",
+          date: form.date,
+          time: form.time,
+          message: form.message,
+        },
+        "dFNU9MQhyohyyz-VM",
+      );
+
+      toast.success(
+        "Consultation request submitted successfully! We'll contact you shortly.",
+        {
+          icon: "🚀",
+        },
+      );
+
+      setForm({
+        name: "",
+        email: "",
+        company: "",
+        consultation: "",
+        date: "",
+        time: "",
+        message: "",
+      });
+    } catch (error) {
+      console.error(error);
+      toast.error("Failed to submit consultation request. Please try again.");
+    } finally {
+      setSending(false);
+    }
+  };
+
   return (
     <section
       style={{
@@ -27,7 +111,6 @@ export default function Consultation() {
           margin: "0 auto",
         }}
       >
-        {/* Heading */}
         <div
           style={{
             textAlign: "center",
@@ -59,7 +142,6 @@ export default function Consultation() {
           </p>
         </div>
 
-        {/* Benefits */}
         <div
           style={{
             display: "flex",
@@ -78,7 +160,6 @@ export default function Consultation() {
           <span>✓ Cloud Solutions</span>
         </div>
 
-        {/* Form */}
         <div
           style={{
             background: "#0f1d33",
@@ -89,36 +170,74 @@ export default function Consultation() {
           }}
         >
           <form
+            onSubmit={sendConsultation}
             style={{
               display: "flex",
               flexDirection: "column",
               gap: isMobile ? "18px" : "25px",
             }}
           >
-            <input type="text" placeholder="Full Name" style={inputStyle} />
-
             <input
-              type="email"
-              placeholder="Email Address"
+              type="text"
+              name="name"
+              placeholder="Full Name"
+              value={form.name}
+              onChange={handleChange}
               style={inputStyle}
             />
 
-            <input type="text" placeholder="Company Name" style={inputStyle} />
+            <input
+              type="email"
+              name="email"
+              placeholder="Email Address"
+              value={form.email}
+              onChange={handleChange}
+              style={inputStyle}
+            />
 
-            <select style={inputStyle}>
-              <option>Select Consultation Type</option>
+            <input
+              type="text"
+              name="company"
+              placeholder="Company Name"
+              value={form.company}
+              onChange={handleChange}
+              style={inputStyle}
+            />
+
+            <select
+              name="consultation"
+              value={form.consultation}
+              onChange={handleChange}
+              style={inputStyle}
+            >
+              <option value="">Select Consultation Type</option>
               <option>AI Solutions</option>
               <option>Web Development</option>
               <option>Cybersecurity</option>
               <option>Cloud Infrastructure</option>
             </select>
 
-            <input type="date" style={inputStyle} />
+            <input
+              type="date"
+              name="date"
+              value={form.date}
+              onChange={handleChange}
+              style={inputStyle}
+            />
 
-            <input type="time" style={inputStyle} />
+            <input
+              type="time"
+              name="time"
+              value={form.time}
+              onChange={handleChange}
+              style={inputStyle}
+            />
 
             <textarea
               rows={isMobile ? "4" : "5"}
+              name="message"
+              value={form.message}
+              onChange={handleChange}
               placeholder="Tell us what you'd like to discuss..."
               style={{
                 ...inputStyle,
@@ -128,6 +247,8 @@ export default function Consultation() {
             />
 
             <button
+              type="submit"
+              disabled={sending}
               className="btn btn--primary hover-btn glow-button"
               style={{
                 width: isMobile ? "100%" : "250px",
@@ -136,7 +257,7 @@ export default function Consultation() {
                 fontWeight: "700",
               }}
             >
-              Schedule Consultation
+              {sending ? "Scheduling..." : "Schedule Consultation"}
             </button>
           </form>
         </div>

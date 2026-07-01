@@ -1,5 +1,6 @@
 import { useState } from "react";
 import emailjs from "@emailjs/browser";
+import toast from "react-hot-toast";
 
 export default function Contact() {
   const isMobile = window.innerWidth < 768;
@@ -13,7 +14,6 @@ export default function Contact() {
   });
 
   const [sending, setSending] = useState(false);
-  const [status, setStatus] = useState("");
 
   const handleChange = (e) => {
     setForm({
@@ -44,8 +44,9 @@ export default function Contact() {
         "dFNU9MQhyohyyz-VM",
       );
 
-      setStatus("success");
-      setTimeout(() => setStatus(""), 5000);
+      toast.success(
+        "Thank you for contacting SNC Technologies. We'll get back to you shortly.",
+      );
 
       setForm({
         name: "",
@@ -55,8 +56,7 @@ export default function Contact() {
       });
     } catch (error) {
       console.error(error);
-      setStatus("error");
-      setTimeout(() => setStatus(""), 5000);
+      toast.error("Unable to send your message. Please try again.");
     } finally {
       setSending(false);
     }
@@ -152,7 +152,7 @@ export default function Contact() {
                 📞 Phone
               </h3>
 
-              <p style={{ color: "#cbd5e1" }}>+91 89280 39613 </p>
+              <p style={{ color: "#cbd5e1" }}>+91 XXXXX XXXXX </p>
             </div>
 
             <div className="hover-card" style={cardStyle}>
@@ -253,41 +253,6 @@ export default function Contact() {
                 resize: "none",
               }}
             />
-
-            {status === "success" && (
-              <div
-                style={{
-                  background: "rgba(16,185,129,0.15)",
-                  border: "1px solid #10b981",
-                  color: "#10b981",
-                  padding: "15px",
-                  borderRadius: "10px",
-                  marginBottom: "20px",
-                  fontWeight: "600",
-                }}
-              >
-                ✅ Thank you for contacting SNC Technologies. Our team has
-                successfully received your message and will get back to you
-                shortly.
-              </div>
-            )}
-
-            {status === "error" && (
-              <div
-                style={{
-                  background: "rgba(239,68,68,0.15)",
-                  border: "1px solid #ef4444",
-                  color: "#ef4444",
-                  padding: "15px",
-                  borderRadius: "10px",
-                  marginBottom: "20px",
-                  fontWeight: "600",
-                }}
-              >
-                ❌ We couldn't send your message. Please try again in a few
-                moments.
-              </div>
-            )}
 
             <button
               onClick={sendEmail}
