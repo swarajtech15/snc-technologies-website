@@ -64,7 +64,7 @@ export default function Consultation() {
           name: form.name,
           email: form.email,
           company: form.company,
-          consultation: form.consultation,
+          service: form.consultation,
           budget: "Not specified",
           date: form.date,
           time: form.time,
